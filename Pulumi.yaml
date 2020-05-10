@@ -1,0 +1,3 @@
+name: pulumi-baremetal-ingress
+runtime: go
+description: Install metallb and an ingress controller on a baremetal cluster
