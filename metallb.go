@@ -20,7 +20,10 @@ func newMetallb(ctx *pulumi.Context, config *config.Config, provider *providers.
 	metallbChartVersion := config.Get("metallbChartVersion")
 	metallbAddress := config.Require("metallbAddress")
 
-	err := createNamespace(ctx, metallbNamespace, provider)
+	_, err := NewLabelledNamespace(ctx, metallbNamespace, nil, pulumi.Provider(provider))
+	if err != nil {
+		return err
+	}
 
 	if err != nil {
 		return fmt.Errorf("Error creating namespace %w", err)
